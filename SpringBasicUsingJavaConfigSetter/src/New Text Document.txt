@@ -1,0 +1,17 @@
+package com.capgemini.spring.renderer;
+import com.capgemini.spring.provider.MessageProvider;
+import com.capgemini.spring.provider.GMMessageProvider;
+
+@Configuration
+public class HelloWorldConfiguration {
+ @Bean
+ public MessageProvider provider() {
+ return new GMMessageProvider();
+ }
+ @Bean
+ public MessageRenderer renderer(){
+ MessageRenderer renderer = new StandardOutMessageRenderer();
+ renderer.setMessageProvider(provider());
+ return renderer;
+ }
+}
